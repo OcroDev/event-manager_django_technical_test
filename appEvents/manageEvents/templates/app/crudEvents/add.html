@@ -1,0 +1,27 @@
+{% extends 'app/base.html' %}
+
+{% block contenido %}
+{% load crispy_forms_tags %}
+<br><br>
+<div class="row">
+    <div class="col-12 col-md-6 offset-md-3">
+        <div class="card">
+            <div class="card-body">
+                <h2>Create new event</h2>
+                <hr>
+                <form action="" method="POST">
+                    {%csrf_token%}
+                    {{ form | crispy }} <br>
+                    <div class="d-flex justify-content-end">
+                        <button type="reset" class="btn btn-secondary">Cancel</button>&nbsp;
+                        <input type="submit" value="Save" class="btn btn-primary">
+                    </div>
+                </form>
+                <br><br>
+                <!--<p style="color:rgb(228, 52, 81)">{{message}}</p>-->
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock contenido %}

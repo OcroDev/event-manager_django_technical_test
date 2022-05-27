@@ -1,0 +1,26 @@
+{% extends 'app/base.html' %}
+
+{% block contenido %}
+<br><br>
+<div class="row">
+    <div class="col-12 col-md-6 offset-md-3">
+        <div class="card">
+            <div class="card-body">
+                <h2>Edit Event</h2>
+                <hr>
+                <form action="" method="post">
+                    {%csrf_token%}
+                    {{ form }}
+                    <div class="d-flex justify-cotent-end">
+                        <input type="submit" value="Cancel" class="btn btn-secondary">&nbsp;
+                        <input type="submit" value="Edit" class="btn btn-primary">
+                    </div>
+                </form>
+                <br><br>
+                <p style="color:rgb(228, 52, 81)">{{message}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock contenido %}

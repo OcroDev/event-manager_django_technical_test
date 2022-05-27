@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Happy Piggy Events</title>
+
+
+
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:ital,wght@0,700;1,400;1,700&family=Open+Sans:ital,wght@0,400;0,700;1,600&display=swap"
+        rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+    {% load static %} {%block css%} {%endblock%}
+    <link rel="stylesheet" href="{% static 'app/css/style.css' %}" />
+
+</head>
+
+{% block js %} {% endblock %}
+
+<body>
+    <header style="background-color: #661d61">
+        <div>
+            <a href="{% url 'Home' %}" class="btn btn-outline-dark"> <img class="btn-floating m-2  "
+                    src="{% static 'app/img/happy_piggy_logo.png' %}" alt="logo"
+                    style="height: 49px; width:130px " /></a>
+        </div>
+
+        <div>
+            <nav id="nav">
+                <ul>
+                    <li>
+                        <a href="{% url 'Home' %}">Home </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'ContactUs' %}">Contact us</a>
+                    </li>
+                    {% if perms.manageEvents.add_events %}
+                    <li>
+                        <a href="{% url 'addEvent' %}">Create Event</a>
+                    </li>
+                    {% endif %} {% if perms.manageEvents.views_events %}
+                    <li><a href="{% url 'readEvents' %}">Event List</a></li>
+                    {% endif %} {% if user.is_authenticated %}
+
+                    <li>
+                        <a href="{% url 'logout' %}">Logout</a>
+                    </li>
+                    <li><a href="#">@{{ user.username | upper }}</a></li>
+                    {% else %}
+                    <li>
+                        <a href="{% url 'login' %}">Login</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'userRegistration' %}">Sign up</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section>
+
+        <div>{%block contenido%} {%endblock%}</div>
+
+    </section>
+
+
+    <!--
+    <div class="container">
+        <div class="row">
+            <footer>
+                <div class="d-flex justify-content-center">
+                    <div class="btn btn-outline-light btn-floating m-2 ">
+                        <a href="{% url 'Home' %}">
+                            <img src="{%static 'app/img/happy_piggy_logo.png'%}" style="height: 50px; width:100px "
+                                alt="logo" />
+                        </a>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+-->
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    {% if messages %} {% for m in messages %}
+    <script>
+        Swal.fire({
+            text: "{{m}}",
+            icon: "succes",
+        });
+    </script>
+    {% endfor %} {% endif %}
+</body>
+
+</html>
