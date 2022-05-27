@@ -8,5 +8,5 @@ Este usuario permite la creación, edición y eliminación de los eventos
 en el detalle de los eventos para suscribirse o quitar su sucripción si lo
 desean
 
-# Se deben instalar los plugins del archivo requirements.txt
+# Antes de empezar se deben instalar los plugins (o dependencias) del archivo requirements.txt
 
